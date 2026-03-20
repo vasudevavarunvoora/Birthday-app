@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Our Moments ❤️</title>
+
+    <!-- Google Fonts (VERY IMPORTANT) -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Floating hearts */
+        .hearts span {
+            position: absolute;
+            color: rgba(255,255,255,0.6);
+            font-size: 20px;
+            animation: float 8s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh); opacity: 1; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+
+        /* Card */
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(255, 105, 135, 0.5);
+            max-width: 600px;
+        }
+
+        /* Heading */
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #ff4d6d;
+        }
+
+        /* Text lines */
+        .line {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #fff0f5;
+
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s forwards;
+        }
+
+        .line:nth-child(2) { animation-delay: 1s; }
+        .line:nth-child(3) { animation-delay: 2s; }
+        .line:nth-child(4) { animation-delay: 3s; }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Hearts -->
+<div class="hearts">
+    <span style="left:10%">❤️</span>
+    <span style="left:30%">❤️</span>
+    <span style="left:50%">❤️</span>
+    <span style="left:70%">❤️</span>
+    <span style="left:90%">❤️</span>
+</div>
+
+<!-- Card -->
+<div class="card">
+    <h1>For You 💖</h1>
+
+    <div class="line" style="font-style: italic;color: black;">Every moment with you is special ❤️</div>
+    <div class="line" style="font-style: italic;color: black;">Today is all about celebrating YOU 🎂✨</div>
+    <div class="line" style="font-style: italic;color: black;">You make my life brighter every day 💕</div>
+    <div class="line" style="font-style: italic;color: black;">Let’s create beautiful memories together 💘</div>
+</div>
+
+</body>
+</html>

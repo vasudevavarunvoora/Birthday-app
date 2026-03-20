@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sangeetha's Birthday</title>
+
+    <style>
+        h1 {
+            font-size: 48px;
+        }
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial;
+            text-align: center;
+            background: black;
+            color: white;
+        }
+
+        .hearts span {
+            position: absolute;
+            color: pink;
+            font-size: 20px;
+            animation: float 10s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh); opacity: 1; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .btn1 { background: #ff4d6d; color: white; }
+        .btn2 { background: #6c757d; color: white; }
+
+        #main-content {
+            margin-top: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="hearts">
+    <span style="left:10%">❤</span>
+    <span style="left:30%">❤</span>
+    <span style="left:50%">❤</span>
+    <span style="left:70%">❤</span>
+    <span style="left:90%">❤</span>
+</div>
+
+<div id="main-content">
+    <h1>Happy birthday my Love ❤️</h1>
+
+    <p style="
+        font-size:18px; 
+        margin-top:10px; 
+        color:#ffb6c1;
+        font-style: italic;
+    ">
+        😏 Select one from below… but choose wisely 🤭 <br>
+        (Some options may have hidden consequences 😜)
+    </p>
+
+    <div style="display:flex; justify-content:center; gap:20px;">
+        <form action="/go" method="get">
+            <button class="btn1" type="submit">Dinner Night</button>
+        </form>
+
+        <button class="btn2" id="goldBtn" type="button" onclick="showLove()">Gold Necklace</button>
+    </div>
+</div>
+
+<script>
+let labelCount = 0;
+const maxLabels = 4;
+
+const texts = [
+    "❤️ Gold Chain ❤️",
+    "💖 Gold Bracelet 💖",
+    "💕 Gold Ring 💕",
+    "💘 Please press dinner 😜🤭"
+];
+
+function showLove() {
+    goldBtn.style.visibility = "hidden";
+    labelCount = 0;
+    document.querySelectorAll(".love-label").forEach(e => e.remove());
+    createLabel();
+}
+
+function getSafePosition() {
+    const content = document.getElementById("main-content");
+    const rect = content.getBoundingClientRect();
+
+    let x, y;
+
+    do {
+        x = Math.random() * (window.innerWidth - 150);
+        y = Math.random() * (window.innerHeight - 50);
+    } while (
+        x > rect.left - 100 &&
+        x < rect.right &&
+        y > rect.top - 50 &&
+        y < rect.bottom
+    );
+
+    return { x, y };
+}
+
+function createLabel() {
+    if (labelCount >= maxLabels) return;
+
+    const label = document.createElement("div");
+    label.style.fontWeight = "bold";    
+    label.className = "love-label";
+    label.innerText = texts[labelCount];
+
+    const pos = getSafePosition();
+
+    label.style.position = "absolute";
+    label.style.left = pos.x + "px";
+    label.style.top = pos.y + "px";
+    label.style.fontSize = "20px";
+    label.style.color = "#ff99cc";
+    label.style.cursor = "pointer";
+
+    labelCount++;
+
+    if (labelCount < maxLabels) {
+        label.onmouseover = function () {
+            label.remove();
+            createLabel();
+        };
+    }
+
+    document.body.appendChild(label);
+}
+</script>
+
+</body>
+</html>
